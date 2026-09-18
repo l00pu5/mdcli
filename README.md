@@ -1,22 +1,16 @@
 # md-cli
 
-Ein modernes, schnelles und visuell ansprechendes CLI-Tool für Entwickler und Autoren, um große Mengen an Markdown-Dateien direkt im Terminal zu navigieren, zu durchsuchen, zu strukturieren und komfortabel zu lesen.
+A CLI tool for handling MD files
 
 ## Features
 
-- 🌲 **Struktur-Baum (`tree`)**: Zeigt die hierarchische Überschriften-Struktur (H1 bis H6) als farbigen Unicode-Baum mit Zeilennummern.
-- 🗺️ **Verzeichnis-Übersicht (`map`)**: Scannt Ordner rekursiv nach `.md`-Dateien und zeigt YAML-Frontmatter-Titel neben den Dateinamen an.
-- 🔍 **Volltext- & Frontmatter-Suche (`search`)**: Schnelle Suche mit hervorgehobenen Snippets. Unterstützt gezielte Tag-Suche (`--tags`).
-- 📋 **Inhaltsverzeichnis (`toc`)**: Automatische Generierung von TOCs basierend auf Überschriften. Mit `--inject` direkt in Dateien einbettbar (unter `<!-- toc -->`).
-- 📖 **Markdown-Viewer (`view`)**: Rendert Markdown mit Syntax-Highlighting und pipe-t lange Dokumente automatisch in den System-Pager (`less -R`).
+- 🌲 **Tree (`tree`)**: Zeigt die hierarchische Überschriften-Struktur (H1 bis H6) als farbigen Unicode-Baum mit Zeilennummern.
+- 🗺️ **Directory Overview (`map`)**: Scannt Ordner rekursiv nach `.md`-Dateien und zeigt YAML-Frontmatter-Titel neben den Dateinamen an.
+- 🔍 **Fulltext and front matter search (`search`)**: Schnelle Suche mit hervorgehobenen Snippets. Unterstützt gezielte Tag-Suche (`--tags`).
+- 📋 **Table of contents (`toc`)**: Automatische Generierung von TOCs basierend auf Überschriften. Mit `--inject` direkt in Dateien einbettbar (unter `<!-- toc -->`).
+- 📖 **Viewer (`view`)**: Rendert Markdown mit Syntax-Highlighting und pipe-t lange Dokumente automatisch in den System-Pager (`less -R`).
 
 ## Installation
-
-```bash
-npm install -g md-cli
-```
-
-Oder lokal im Projekt:
 
 ```bash
 npm link
@@ -26,7 +20,7 @@ npm link
 
 ### 1. Überschriften-Baum (`tree`)
 ```bash
-md-cli tree <dateipfad>
+md-cli tree <file>
 # Beispiel:
 md-cli tree test_docs/guide.md
 ```
