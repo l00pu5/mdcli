@@ -36,7 +36,7 @@ md-cli map test_docs
 ### 3. search (`search`)
 ```bash
 # full-text search with snippet highlighting:
-md-cli search "Terminal" --dir test_docs
+md-cli search "terminal" --dir test_docs
 
 # targeted search in YAML frontmatter tags:
 md-cli search "cli" --tags --dir test_docs
