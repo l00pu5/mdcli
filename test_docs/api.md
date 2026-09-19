@@ -1,5 +1,5 @@
 ---
-title: API Referenz
+title: API reference
 category: documentation
 version: 2.1.0
 tags:
@@ -8,17 +8,17 @@ tags:
   - cli
 ---
 
-# API Dokumentation
+# API documentation
 
-Diese Datei beschreibt die Programmierschnittstellen und Konfigurationsoptionen von md-cli.
+This file describes the API and configuration options of `md-cli`.
 
-## Renderer Schnittstelle
+## Renderer interface
 
-Der Terminal-Renderer wandelt Markdown-Tokens in ANSI-farbcodierte Strings um.
+The terminal renderer converts MD tokens into ANSI-encoded strings.
 
-### Optionen
+### Options
 
-Folgende Optionen können an den Renderer übergeben werden:
+The following options can be passed to the renderer:
 
 ```typescript
 interface RendererOptions {
@@ -28,7 +28,7 @@ interface RendererOptions {
 }
 ```
 
-### Verwendung
+### Usage
 
 ```javascript
 import { Marked } from 'marked';
@@ -38,11 +38,11 @@ const marked = new Marked(markedTerminal());
 const output = marked.parse('# Hallo Welt');
 ```
 
-## Dateiscanner API
+## File scanner API
 
-Der Dateiscanner ermittelt rekursiv Markdown-Dateien.
+The file scanner finds and identifies MD files recursively.
 
-### Signatur
+### Signature
 
 - `findMarkdownFiles(dirPath: string): string[]`
 - `buildDirectoryMarkdownTree(dirPath: string): object`

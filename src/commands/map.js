@@ -13,14 +13,14 @@ export async function mapCommand(dirPath = '.') {
   const resolvedDir = path.resolve(dirPath);
 
   if (!fs.existsSync(resolvedDir)) {
-    console.error(chalk.red.bold(`❌ Fehler: Verzeichnis '${dirPath}' existiert nicht.`));
+    console.error(chalk.red.bold(`❌ Error: directory '${dirPath}' does not exist`));
     process.exitCode = 1;
     return;
   }
 
   const stat = fs.statSync(resolvedDir);
   if (!stat.isDirectory()) {
-    console.error(chalk.red.bold(`❌ Fehler: '${dirPath}' ist kein Verzeichnis.`));
+    console.error(chalk.red.bold(`❌ Error: '${dirPath}' is not a directory`));
     process.exitCode = 1;
     return;
   }
@@ -30,7 +30,7 @@ export async function mapCommand(dirPath = '.') {
 
   if (!tree || allMdFiles.length === 0) {
     console.log(boxen(
-      `${chalk.bold.blue('📁 ' + path.basename(resolvedDir))}\n\n${chalk.yellow('⚠️ Keine Markdown-Dateien (.md, .markdown) gefunden.')}`,
+      `${chalk.bold.blue('📁 ' + path.basename(resolvedDir))}\n\n${chalk.yellow('⚠️ no MD files found')}`,
       { padding: 1, borderColor: 'yellow', borderStyle: 'round' }
     ));
     return;
@@ -43,7 +43,7 @@ export async function mapCommand(dirPath = '.') {
   const dirCount = dirSet.size;
 
   const stats = chalk.gray(
-    `📊 Gefunden: ${chalk.bold(allMdFiles.length)} Markdown-Dateien in ${chalk.bold(dirCount)} Verzeichnis(sen)`
+    `📊 Found: ${chalk.bold(allMdFiles.length)} MD files in ${chalk.bold(dirCount)} directories`
   );
 
   console.log(
@@ -53,7 +53,7 @@ export async function mapCommand(dirPath = '.') {
         padding: 1,
         borderColor: 'blue',
         borderStyle: 'round',
-        title: chalk.bold(' Verzeichnis-Übersicht '),
+        title: chalk.bold(' Directory overview '),
         titleAlignment: 'left'
       }
     )

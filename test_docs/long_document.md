@@ -1,49 +1,51 @@
 ---
-title: Ausführliches Handbuch für Markdown-Architektur
+title: Comprehensive manual for MD architecture
 author: Documentation Guild
 version: 3.0
 date: 2026-09-18
 tags:
   - architecture
   - handbook
+  - manual
   - guide
+  - guideline
   - standards
 ---
 
-# Ausführliches Handbuch für Markdown-Architektur
+# Comprehensive manual for the Markdown architecture
 
-Willkommen beim umfassenden Handbuch zur Erstellung, Pflege und Organisation von technischen Dokumentationen in Markdown.
+Welcome to this manual covering creation, maintenance and organization of technical documentation in Markdown.
 
 <!-- toc -->
 <!-- /toc -->
 
-## 1. Einleitung und Motivation
+## 1. Introduction and motivation
 
-Dokumentation ist ein kritischer Bestandteil moderner Softwareentwicklung. Code wird häufiger gelesen als geschrieben – für Dokumentation gilt dies in noch viel stärkerem Maße.
+Documentation is a critical aspect and building block of modern software development. Code is being read more than it is written - this is even more valid for accompanying documentation.
 
-Markdown hat sich als De-facto-Standard etabliert, weil es:
+Markdown has been established as a de-facto standard for the following reasons:
 
-1. Plattformunabhängig lesbar ist (auch als Rohtext).
-2. Direkt neben dem Quellcode versioniert werden kann (`Docs as Code`).
-3. Einfach in CI/CD-Pipelines verarbeitet werden kann.
+1. It is platform-independent and easily readable (even as raw text / unprocessed)
+2. It can be versioned alongside the source code (`documentation as code`)
+3. It can be processed easily in CI/CD pipelines
 
-### 1.1 Zielgruppe dieses Dokuments
+### 1.1 Target audience of this document
 
-Dieses Dokument richtet sich an:
+This document is primarily targeting the following audience:
 
-- Software-Architekten
-- Backend- und Frontend-Entwickler
-- Technical Writers und Produktmanager
+- Software architects
+- Backend and frontend developers
+- Technical writers and product managers
 
 ---
 
-## 2. Best Practices für Dokumentationsstrukturen
+## 2. Best pratices for documentation structuring
 
-Eine gut durchdachte Ordnerstruktur verhindert Redundanzen und erleichtert neuen Teammitgliedern den Einstieg.
+A wel-planned folder structure avoids redundancies and makes it easier for team menbers tzo find their way around the documentation.
 
-### 2.1 Standard-Verzeichnisaufbau
+### 2.1 Directory layout
 
-Wir empfehlen folgende Struktur für Repositories:
+We recommend the following structure for documentation repositories:
 
 ```
 docs/
@@ -60,14 +62,14 @@ docs/
     └── troubleshooting.md
 ```
 
-### 2.2 Frontmatter-Konventionen
+### 2.2 Frontmatter conventions
 
-Jedes Dokument sollte standardisierte YAML-Frontmatter-Felder beinhalten:
+Every document shall contain a standardized YAML frontmatter:
 
 ```yaml
 ---
-title: Aussagekräftiger Titel
-author: Vorname Nachname
+title: expressive document title
+author: first name, last name
 date: YYYY-MM-DD
 tags: [tag1, tag2]
 version: 1.0.0
@@ -76,30 +78,30 @@ version: 1.0.0
 
 ---
 
-## 3. Formatierungsrichtlinien
+## 3. Formatting guidelines
 
-Konsistenz sorgt für ein professionelles Erscheinungsbild und erleichtert automatisierte Auswertungen.
+Consistency is a key aspect to ensure a professional appearance and to facilitate automated analysis / evaluation.
 
-### 3.1 Überschriftenhierarchie
+### 3.1 Heading hierarchy
 
-- Es darf pro Dokument genau eine **H1-Überschrift** geben.
-- Überschriften-Ebenen dürfen **nicht übersprungen** werden (z.B. von H2 direkt zu H4).
-- Verwende verständliche Verben und Substantive.
+- There must only be one **H1 heading** per document
+- Heading layers must **not be skipped** (e.g. H2 -> H4)
+- Accessible and expressive language shall be used
 
-### 3.2 Codeblöcke mit Syntax-Highlighting
+### 3.2 Cose blocks with synatx highlighting
 
-Gib immer die Sprache für Code-Blöcke an:
+Always specify the language for code blocks:
 
 ```python
 def calculate_metric(values: list[float]) -> float:
-    """Berechnet den Durchschnittswert."""
+    """Calculates the average"""
     if not values:
         return 0.0
     return sum(values) / len(values)
 ```
 
 ```javascript
-// Beispiel für asynchrones Laden
+// example for async loading
 async function loadDocument(filePath) {
   const content = await fs.promises.readFile(filePath, 'utf-8');
   return parseMarkdown(content);
@@ -107,30 +109,30 @@ async function loadDocument(filePath) {
 ```
 
 ```bash
-# Terminal-Aufruf
+# invocation via terminal
 md-cli view docs/getting-started.md
 ```
 
-### 3.3 Tabellen und Vergleiche
+### 3.3 Tables and comparisons
 
-Tabellen sollten mit klaren Spaltendefinitionen erstellt werden:
+Tables should be created with clear column definitions:
 
 | Feature | md-cli | Pandoc | glow |
 | :--- | :---: | :---: | :---: |
-| Native Tree View | Ja | Nein | Nein |
-| Frontmatter Map | Ja | Nein | Nein |
-| Auto-TOC Injection | Ja | Nein | Nein |
-| Fast Terminal Pager | Ja | Nein | Ja |
+| Native Tree View | Yes | No | No |
+| Frontmatter Map | Yes | No | No |
+| Auto-TOC Injection | Yes | No | No |
+| Fast Terminal Pager | Yes | No | Yes |
 
 ---
 
-## 4. Workflows und Automatisierung
+## 4. Workflows and automation
 
-Automatisierte Validierung in Git-Hooks verhindert fehlerhafte Dokumente.
+Automated validation via Git hooks prevents errors in documents.
 
-### 4.1 Git Pre-Commit Hooks
+### 4.1 Git pre-commit hooks
 
-Ein typischer Pre-Commit Hook könnte folgendes ausführen:
+A typical pre-commit hook could execute the following:
 
 ```bash
 #!/bin/sh
@@ -138,9 +140,9 @@ md-cli toc docs/**/*.md --inject
 git add docs/**/*.md
 ```
 
-### 4.2 CI/CD Integration
+### 4.2 CI/CD integration
 
-In GitHub Actions oder GitLab CI:
+Via GitHub actions or GitLab CI:
 
 ```yaml
 name: Docs Validation
@@ -159,19 +161,19 @@ jobs:
 
 ---
 
-## 5. Häufig gestellte Fragen (FAQ)
+## 5. Frequently askes questions (FAQ)
 
-### Kann ich md-cli in Skripten ohne Pager nutzen?
-Ja, verwende einfach das Flag `--no-pager`, um den Output direkt nach `stdout` zu schreiben.
+### Can I use md-cli in in scripts without pager?
+Yes, simply use the flag `--no-pager` to write the output directly to `stdout`.
 
-### Wie funktioniert die Tag-Suche?
-Der Parameter `--tags` durchsucht die YAML-Frontmatter Properties nach passenden Schlüssel-Werte-Paaren.
+### How does the tag search work?
+The parameter `--tags` will search the YAML frontmatter for matching key-value pairs.
 
-### Werden `.git` und `node_modules` automatisch ignoriert?
-Ja, interne Verzeichnisse werden beim Scannen automatisch übersprungen.
+### Will `.git` and `node_modules` be ignored?
+Yes, project-internal directories will be skipped / ignored accordingly.
 
 ---
 
-## 6. Zusammenfassung und nächste Schritte
+## 6. Summary / next steps
 
-Mit sauberen Konventionen und den richtigen Terminal-Werkzeugen wird Dokumentation vom ungeliebten Stiefkind zum wertvollen Beschleuniger im Entwickleralltag.
+By using clean conventions and proper tooling, documentation can serve as a catalyst.

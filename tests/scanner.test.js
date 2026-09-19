@@ -19,10 +19,10 @@ describe('File Scanner Tests', () => {
     assert.equal(tree.type, 'dir');
     const apiFile = tree.children.find(c => c.name === 'api.md');
     assert.ok(apiFile);
-    assert.equal(apiFile.title, 'API Referenz');
+    assert.equal(apiFile.title, 'API reference');
 
     const nestedDir = tree.children.find(c => c.name === 'nested');
     assert.ok(nestedDir);
-    assert.equal(nestedDir.children[0].title, 'Entwickler-Notizen');
+    assert.equal(nestedDir.children[0].title, 'Developer notes');
   });
 });

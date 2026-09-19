@@ -13,14 +13,14 @@ export async function treeCommand(filePath) {
   const resolvedPath = path.resolve(filePath);
 
   if (!fs.existsSync(resolvedPath)) {
-    console.error(chalk.red.bold(`❌ Fehler: Datei '${filePath}' existiert nicht.`));
+    console.error(chalk.red.bold(`❌ Error: file '${filePath}' does not exist`));
     process.exitCode = 1;
     return;
   }
 
   const stat = fs.statSync(resolvedPath);
   if (!stat.isFile()) {
-    console.error(chalk.red.bold(`❌ Fehler: '${filePath}' ist keine Datei.`));
+    console.error(chalk.red.bold(`❌ Error: '${filePath}' is not a file`));
     process.exitCode = 1;
     return;
   }
@@ -29,7 +29,7 @@ export async function treeCommand(filePath) {
   try {
     rawContent = fs.readFileSync(resolvedPath, 'utf8');
   } catch (err) {
-    console.error(chalk.red.bold(`❌ Fehler beim Lesen der Datei: ${err.message}`));
+    console.error(chalk.red.bold(`❌ Error while reading file: ${err.message}`));
     process.exitCode = 1;
     return;
   }
@@ -37,13 +37,13 @@ export async function treeCommand(filePath) {
   const { data: frontmatter } = parseMarkdown(rawContent);
   const headings = extractHeadings(rawContent);
 
-  const titleHeader = frontmatter.title 
+  const titleHeader = frontmatter.title
     ? `${path.basename(resolvedPath)} ${chalk.dim.italic(`(${frontmatter.title})`)}`
     : path.basename(resolvedPath);
 
   if (headings.length === 0) {
     console.log(boxen(
-      `${chalk.cyan.bold('📄 ' + titleHeader)}\n\n${chalk.yellow('⚠️ Keine Markdown-Überschriften (H1-H6) in dieser Datei gefunden.')}`,
+      `${chalk.cyan.bold('📄 ' + titleHeader)}\n\n${chalk.yellow('⚠️ No MD headings (H1-H6) found in this file')}`,
       { padding: 1, borderColor: 'yellow', borderStyle: 'round' }
     ));
     return;
@@ -53,7 +53,7 @@ export async function treeCommand(filePath) {
   const treeOutput = formatHeadingTree(hierarchy);
 
   const stats = chalk.gray(
-    `📊 Überschriften: ${headings.length} | Ebenen: ${[...new Set(headings.map(h => 'H' + h.level))].sort().join(', ')}`
+    `📊 Headings: ${headings.length} | Layers: ${[...new Set(headings.map(h => 'H' + h.level))].sort().join(', ')}`
   );
 
   console.log(
@@ -63,7 +63,7 @@ export async function treeCommand(filePath) {
         padding: 1,
         borderColor: 'cyan',
         borderStyle: 'round',
-        title: chalk.bold(' Überschriften-Struktur '),
+        title: chalk.bold(' Heading structure '),
         titleAlignment: 'left'
       }
     )

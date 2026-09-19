@@ -1,6 +1,6 @@
 ---
-title: Einführung in md-cli
-author: Antigravity Team
+title: Introduction to md-cli
+author: Sebastian Block
 date: 2026-09-18
 tags:
   - guide
@@ -8,69 +8,67 @@ tags:
   - markdown
 ---
 
-# Einführung in md-cli
+# Introduction to md-cli
 
-Ein modernes CLI-Werkzeug zur mühelosen Erkundung von Markdown-Dokumentationen.
+A simple CLI tool for exploring MD documentation repositories.
 
 <!-- toc -->
-* [Einführung in md-cli](#einführung-in-md-cli)
-  * [Warum md-cli?](#warum-md-cli)
-    * [Kernphilosophie](#kernphilosophie)
-      * [Minimaler Overhead](#minimaler-overhead)
-  * [Installation & Setup](#installation-setup)
-    * [Erste Schritte](#erste-schritte)
-  * [Befehlsübersicht](#befehlsübersicht)
-  * [Fazit](#fazit)
+* [Introduction to md-cli](#introduction-to-md-cli)
+  * [Why md-cli?](#why-md-cli)
+    * [Core philiosophy](#core-philosophy)
+      * [Minimal overhead](#minimal-overhead)
+  * [Installation & setup](#installation-setup)
+    * [First steps](#first-steps)
+  * [Command overview](#command-overview)
+  * [Summary](#summary)
 <!-- /toc -->
 
-## Warum md-cli?
+## Why md-cli?
 
-Große Markdown-Repositories können unübersichtlich werden. `md-cli` bietet intuitive Befehle für das Terminal:
+Large MD document repositories can become overwhelming easily. `md-cli` offers intuitive terminal commands:
 
-- **Visuelle Baumstruktur**: Schneller Überblick über die Kapitelstruktur.
-- **Verzeichnis-Mapping**: Automatische Erkennung von Frontmatter-Titeln.
-- **Volltextsuche**: Schnelle Suche mit Kontext-Snippets.
+- **Visual tree structure**: quick overview of file and directory structure
+- **Directory mapping**: automatic recognition of frontmatter titles
+- **Full text search**: quick search with context snippets
 
-### Kernphilosophie
+### Core philosophy
 
-Wir glauben an:
+We believe in the following goals as necessities:
 
-1. Schnelligkeit im Terminal
-2. Schöne, farbige Ausgabe
-3. Kompatibilität mit gängigen Markdown-Standards
+1. Fast operation within the terminal
+2. Colored output
+3. Compatibility with MD standards / common practices
 
-#### Minimaler Overhead
+#### Minimum overhead
 
-Keine schweren Desktop-Editoren nötig, wenn man nur schnell etwas nachschlagen möchte.
+No heavy desktop editors are necessary if you would simply like to look up something real quick.
 
-## Installation & Setup
-
-Die Installation erfolgt bequem über npm:
+## Installation & setup
 
 ```bash
-npm install -g md-cli
+npm link
 ```
 
-### Erste Schritte
+### First steps
 
-Nach der Installation steht der Befehl `md-cli` direkt zur Verfügung:
+After installation the `md-cli` command can be executed directly from the terminal:
 
 ```bash
 md-cli --help
 ```
 
-## Befehlsübersicht
+## Command overview
 
-Hier ist eine kurze Übersicht der wichtigsten Befehle:
+This is a brief overview of the most important commands:
 
-| Befehl | Beschreibung |
+| Command | Description |
 | :--- | :--- |
-| `tree` | Zeigt die Überschriften-Hierarchie |
-| `map` | Erstellt einen Dateibaum mit Titeln |
-| `search` | Durchsucht Markdown-Inhalte oder Tags |
-| `toc` | Generiert oder aktualisiert Inhaltsverzeichnisse |
-| `view` | Rendert Dokumente mit Syntax-Highlighting |
+| `tree` | Displays the heading hierarchy |
+| `map` | Display a file tree with titles |
+| `search` | Searches MD content or tags |
+| `toc` | Generates or updates TOCs |
+| `view` | Renders MD document with syntax highlighting |
 
-## Fazit
+## Summary
 
-Mit `md-cli` behältst du stets den Überblick über all deine Dokumentationen.
+With `md-cli` you'll be able to keep track of your MD documentation.

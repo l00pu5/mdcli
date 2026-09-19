@@ -11,56 +11,56 @@ export function createCli() {
 
   program
     .name('md-cli')
-    .description(chalk.cyan.bold('md-cli') + ' - Modernes CLI-Tool zum Navigieren, Durchsuchen und Betrachten von Markdown-Dateien')
-    .version('1.0.0', '-v, --version', 'Gibt die aktuelle Version von md-cli aus');
+    .description(chalk.cyan.bold('md-cli') + ' - CLI tool to navigate, search and view MD files')
+    .version('1.0.0', '-v, --version', 'Prints the current version of md-cli');
 
-  // Command: tree <dateipfad>
+  // Command: tree <file_path>
   program
     .command('tree')
-    .description('Parst eine Markdown-Datei und gibt die Überschriften-Hierarchie (H1-H6) als Baum aus')
-    .argument('<dateipfad>', 'Pfad zur Markdown-Datei')
+    .description('Parses MD file and renders heading structure as a tree')
+    .argument('<file_path>', 'Path to MD file')
     .action(async (filePath) => {
       await treeCommand(filePath);
     });
 
-  // Command: map [verzeichnis]
+  // Command: map [directory]
   program
     .command('map')
-    .description('Scannt ein Verzeichnis rekursiv nach Markdown-Dateien und zeigt einen Baum mit Frontmatter-Titeln')
-    .argument('[verzeichnis]', 'Zu scannendes Verzeichnis (Standard: .)', '.')
+    .description('Scans a directory recursively and displays a tree with frontmatter titles')
+    .argument('[directory]', 'Directory (default: .)', '.')
     .action(async (dirPath) => {
       await mapCommand(dirPath);
     });
 
-  // Command: search <suchbegriff>
+  // Command: search <search_term>
   program
     .command('search')
-    .description('Durchsucht Markdown-Dateien nach einem Begriff (Volltext oder Frontmatter-Tags)')
-    .argument('<suchbegriff>', 'Der gesuchte Begriff')
-    .option('-d, --dir <verzeichnis>', 'Verzeichnis, das durchsucht werden soll', '.')
-    .option('-t, --tags', 'Sucht explizit nur in den YAML-Frontmatter-Tags & Properties', false)
+    .description('Searches MD files for search term (full text or frontmatter tags)')
+    .argument('<search_term>', 'Search term')
+    .option('-d, --dir <directory>', 'Directory to be scanned', '.')
+    .option('-t, --tags', 'Searches only in YAML frontmatter tags & properties', false)
     .action(async (query, options) => {
       await searchCommand(query, options);
     });
 
-  // Command: toc <dateipfad>
+  // Command: toc <file_path>
   program
     .command('toc')
-    .description('Generiert ein Inhaltsverzeichnis (TOC) basierend auf den Überschriften')
-    .argument('<dateipfad>', 'Pfad zur Markdown-Datei')
-    .option('-i, --inject', 'Schreibt das TOC direkt in die Datei (bei <!-- toc -->)', false)
-    .option('--min-level <level>', 'Minimale Überschriften-Ebene (1-6)', '1')
-    .option('--max-level <level>', 'Maximale Überschriften-Ebene (1-6)', '6')
+    .description('Generates TOC based on headings')
+    .argument('<file_path>', 'Path to MD file')
+    .option('-i, --inject', 'Injects the TOC into the file (at <!-- toc -->)', false)
+    .option('--min-level <level>', 'Minimum heading level (1-6)', '1')
+    .option('--max-level <level>', 'Maximum heading level (1-6)', '6')
     .action(async (filePath, options) => {
       await tocCommand(filePath, options);
     });
 
-  // Command: view <dateipfad>
+  // Command: view <file_path>
   program
     .command('view')
-    .description('Rendert Markdown mit Syntax-Highlighting und automatischem Terminal-Pager')
-    .argument('<dateipfad>', 'Pfad zur Markdown-Datei')
-    .option('--no-pager', 'Deaktiviert den automatischen Pager und gibt direkt auf stdout aus')
+    .description('Renders MD with syntax highlighting and terminal paging')
+    .argument('<file_path>', 'Path to MD file')
+    .option('--no-pager', 'Disables paging and renders to stdout instead')
     .action(async (filePath, options) => {
       await viewCommand(filePath, options);
     });

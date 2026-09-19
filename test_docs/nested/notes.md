@@ -1,5 +1,5 @@
 ---
-title: Entwickler-Notizen
+title: Developer notes
 status: draft
 tags:
   - notes
@@ -8,22 +8,22 @@ tags:
 ---
 
 <!-- toc -->
-* [Entwickler Notizen & Roadmap](#entwickler-notizen-roadmap)
-  * [Performance-Optimierungen](#performance-optimierungen)
-  * [Zukünftige Features](#zukünftige-features)
+* [Developer notes & roadmap](#developer-notes-roadmap)
+  * [Performance optimizations](#performance-optimizations)
+  * [Upcoming features](#upcoming-features)
 <!-- /toc -->
 
-# Entwickler Notizen & Roadmap
+# Developer notes & roadmap
 
-Interne Gedanken und geplante Verbesserungen für zukünftige Versionen.
+Internal thoughts and planned improvements for fututre versions.
 
-## Performance-Optimierungen
+## Performance optimizations
 
-- Caching von Frontmatter-Metadaten für große Repositories (> 1000 Markdown-Dateien).
-- Paralleles Parsen von Dateien bei Volltextsuche.
+- Caching of frontmatter meta data for big reprositories (> 1k MD files)
+- Parallel parsing of files when using full-text search
 
-## Zukünftige Features
+## Upcoming features
 
-- Export nach HTML / PDF
-- Interaktiver TUI-Modus mit Ink oder Blessed
-- Fuzzy Search mit fzf-Integration
+- Export to HTML / PDF
+- Interactive TUI mode with Ink or Blessed
+- Fuzzy search with fzf integration

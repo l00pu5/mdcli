@@ -79,7 +79,7 @@ export async function searchCommand(query, options = {}) {
   const onlyTags = Boolean(options.tags);
 
   if (!query || typeof query !== 'string' || query.trim() === '') {
-    console.error(chalk.red.bold('❌ Fehler: Bitte gib einen Suchbegriff an.'));
+    console.error(chalk.red.bold('❌ Error: please provide search term'));
     process.exitCode = 1;
     return;
   }
@@ -87,7 +87,7 @@ export async function searchCommand(query, options = {}) {
   const cleanQuery = query.trim();
 
   if (!fs.existsSync(searchDir)) {
-    console.error(chalk.red.bold(`❌ Fehler: Verzeichnis '${searchDir}' existiert nicht.`));
+    console.error(chalk.red.bold(`❌ Error: directory '${searchDir}' does not exist`));
     process.exitCode = 1;
     return;
   }
@@ -95,7 +95,7 @@ export async function searchCommand(query, options = {}) {
   const files = findMarkdownFiles(searchDir);
 
   if (files.length === 0) {
-    console.log(chalk.yellow(`⚠️ Keine Markdown-Dateien im Verzeichnis '${searchDir}' gefunden.`));
+    console.log(chalk.yellow(`⚠️ no MD files found in directory '${searchDir}'`));
     return;
   }
 
@@ -156,12 +156,12 @@ export async function searchCommand(query, options = {}) {
     }
   }
 
-  const modeLabel = onlyTags ? chalk.magenta.bold('[Tag-Suche]') : chalk.cyan.bold('[Volltext-Suche]');
-  console.log(`\n🔍 ${modeLabel} Suche nach: ${chalk.yellow.bold(`"${cleanQuery}"`)} in ${chalk.blue(searchDir)}\n`);
+  const modeLabel = onlyTags ? chalk.magenta.bold('[tag search]') : chalk.cyan.bold('[text search]');
+  console.log(`\n🔍 ${modeLabel} Searching for: ${chalk.yellow.bold(`"${cleanQuery}"`)} in ${chalk.blue(searchDir)}\n`);
 
   if (results.length === 0) {
     console.log(boxen(
-      chalk.yellow(`Keine Treffer für "${cleanQuery}" gefunden.`),
+      chalk.yellow(`No results found for "${cleanQuery}"`),
       { padding: 1, borderColor: 'yellow', borderStyle: 'round' }
     ));
     return;
@@ -176,13 +176,13 @@ export async function searchCommand(query, options = {}) {
     const displayedMatches = res.matches.slice(0, maxDisplay);
 
     for (const m of displayedMatches) {
-      const lineBadge = chalk.dim.gray(`Zeile ${m.line}:`);
+      const lineBadge = chalk.dim.gray(`Line ${m.line}:`);
       cardContent += `  ${lineBadge} ${m.snippet}\n`;
     }
 
     if (res.matches.length > maxDisplay) {
       const remaining = res.matches.length - maxDisplay;
-      cardContent += `  ${chalk.dim(`... und ${remaining} weitere Treffer in dieser Datei`)}\n`;
+      cardContent += `  ${chalk.dim(`... and ${remaining} additional matches in this file`)}\n`;
     }
 
     console.log(boxen(cardContent.trimEnd(), {
@@ -193,6 +193,6 @@ export async function searchCommand(query, options = {}) {
   }
 
   console.log(chalk.green.bold(
-    `\n✅ Gefunden: ${totalMatches} Treffer in ${results.length} Datei(en).\n`
+    `\n✅ Found: ${totalMatches} matches in ${results.length} file(s)\n`
   ));
 }
